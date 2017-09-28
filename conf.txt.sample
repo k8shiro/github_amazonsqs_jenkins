@@ -1,0 +1,12 @@
+[amazon_sqs]
+url = https://sqs.ap-northeast-1.amazonaws.com/99999999999/sqs_name
+
+[jenkins]
+url = http://jenkins_job_url
+api_token= 999999999999aaaa9999999999
+user = user_name
+
+[env]
+http_proxy = http://proxy:8080
+https_proxy = http://proxy:8080
+no_proxy = 192.168.0.1
