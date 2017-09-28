@@ -13,10 +13,10 @@ def get_sqs_message(sqs, url, max_num):
     try:
         response = sqs.receive_message(QueueUrl=url, MaxNumberOfMessages=max_num)
     except Exception as e:
-        print('=====Error=====')
-        print('get_sqs_message')
-        print('ERROR:' + str(e))
-        print('===============')
+        print "=====Error====="
+        print "get_sqs_message"
+        print "ERROR:" + str(e)
+        print "==============="
         return None
 
     return response
@@ -26,10 +26,10 @@ def delete_sqs_message(sqs, url, msg):
     try:
         response = sqs.delete_message(QueueUrl=url, ReceiptHandle=msg)
     except Exception as e:
-        print('=====Error=====')
-        print('delete_sqs_message')
-        print('ERROR:' + str(e))
-        print('===============')
+        print "=====Error====="
+        print "delete_sqs_message"
+        print "ERROR:" + str(e)
+        print "==============="
         return None
 
     return response
@@ -54,6 +54,8 @@ def run_jenkins(url, user, token, github_message):
 
 
 if __name__ == '__main__':
+    print "=======start========="
+
     config = ConfigParser.SafeConfigParser()
     config.read("conf.txt")
 
@@ -87,3 +89,5 @@ if __name__ == '__main__':
     receipt_handle = get_msg_response["Messages"][0]["ReceiptHandle"]
     del_sqs_response = delete_sqs_message(sqs, sqs_url, receipt_handle)
     print del_sqs_response
+
+    print "==========end============="
